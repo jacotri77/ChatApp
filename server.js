@@ -9,15 +9,15 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
-// app.get("*", function(req, res){
-//     res.sendfile(__dirname + '/client/public/index.html')
-// })
+app.get("*", function(req, res){
+    res.sendfile(__dirname + '/client/public/index.html')
+})
 
-// app.get("/api", function(req, res){
-//     res.json({
-//         "foo":"bar"
-//     })
-// })
+app.get("/api", function(req, res){
+    res.json({
+        "foo":"bar"
+    })
+})
 
 io.on('connection', function(socket){
     socket.on('addMessage', function(message){
