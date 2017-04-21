@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.css'
+import './index.css'
 import { addMessage } from './api/messaging'
 import {connect} from 'react-redux'
 
