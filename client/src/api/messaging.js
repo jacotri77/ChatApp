@@ -2,14 +2,17 @@ import io from 'socket.io-client'
 import store from '../store'
 const socket = io.connect('http://10.68.0.60:3001')
 
+
 export function addMessage(message) {
     socket.emit('addMessage', message)
 }
 
-socket.on('newMessage', function(message){
+socket.on('newMessage', function(message, timeStamp){
     store.dispatch({
         type: 'ADD_MESSAGE',
-        message
+        message,
+        timeStamp
+       
     })
 })
 

@@ -36,7 +36,8 @@ io.on('connection', function(socket){
     })
 
     socket.on('addMessage', function(message){
-        userId = socket.client.conn.id
+        userId = socket.client.conn.id,
+        timeStamp =''
 
         var date = new Date()
         var hour = date.getHours()
@@ -61,7 +62,7 @@ io.on('connection', function(socket){
         } else if(hour < 12 || hour === 24){
            suffix = 'am'
         }
-        
+
         if(hour > 12) {
             hour = hour - 12
         }
@@ -71,6 +72,7 @@ io.on('connection', function(socket){
         console.log(timeStamp)
 
         io.emit('newMessage', message)
+        io.emit('newTime', timeStamp)
         console.log(message)
     })
 })
