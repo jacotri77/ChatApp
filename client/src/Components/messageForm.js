@@ -1,26 +1,36 @@
 import React, { Component } from 'react'
-import './index.css'
-
+import '../index.css'
+import {connect} from 'react-redux'
+import { AddMessage} from '../api/messaging'
+ 
 class MessageForm extends Component{
     constructor(props){
         super()
         this.state = {
-           text: "" 
+           text: ''
         }
     }
-
-  handleSubmit = (e) => {
-      e.preventDefault();
-      var message = {
-          user : this.props.user,
-          text : this.state.text
-      }
-      this.props.onMessageSubmit(message); 
-      this.setState({ text: '' });
+ handleSubmit = (e) => {
+    e.preventDefault()
+    AddMessage(this.state.text)
+    this.setState({
+      text:''
+    })
   }
+//   handleSubmit = (e) => {
+//       e.preventDefault();
+//       var message = {
+//           user : this.props.user,
+//           text : this.state.text
+//       }
+//       this.props.onMessageSubmit(message); 
+//       this.setState({ text: '' });
+//   }
 
-  changeHandler = (e) => {
-      this.setState({ text : e.target.value });
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
   }
 
   render() {
@@ -29,7 +39,7 @@ class MessageForm extends Component{
               <h3>Write New Message</h3>
               <form onSubmit={this.handleSubmit}>
                   <input
-                      onChange={this.changeHandler}
+                      onChange={this.handleChange}
                       value={this.state.text}
                   />
               </form>
@@ -37,4 +47,11 @@ class MessageForm extends Component{
       )
   }
 }
-export default MessageForm
+const mapStateToProps = function(appState) {
+  return {
+    text: appState.text
+  }
+}
+
+export default connect(mapStateToProps)(MessageForm)
+

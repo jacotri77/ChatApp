@@ -1,5 +1,6 @@
 const initialState = {
-    messages: []
+    messages: [],
+    users: []
 }
 
 export default function messageReducer(state=initialState, action) {

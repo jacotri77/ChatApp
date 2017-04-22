@@ -12,3 +12,14 @@ socket.on('newMessage', function(message){
         message
     })
 })
+
+export function addUser(user) {
+    socket.emit('addUser', user)
+}
+
+socket.on('newUser', function(user){
+    store.dispatch({
+        type: 'ADD_USER',
+        user
+    })
+})

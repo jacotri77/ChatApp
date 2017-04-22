@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import './index.css'
+import '../index.css'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-import Login from '../login'
-import ChatRoom from '../chatRoom'
+import Login from './login'
+import ChatRoom from './chatRoom'
 
 class App extends Component {
   constructor(props){
@@ -14,21 +14,46 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-      socket.on('init', this._initialize),
-      socket.on('send:message', this._messageRecieve),
-      socket.on('user:join', this._userJoined),
-      socket.on('user:left', this._userLeft)
+  initialize = (data) => {
+    var {users, name} = data;
+      this.setState({users, user: name})
   }
 
+  messageRecieve = (message) => {
+      var {messages} = this.state
+      messages.push(message)
+      this.setState({messages})
+  }
+
+  userJoined = (data) => {
+      var {users, messages} = this.state
+      var {name} = data
+      users.push(name)
+      messages.push({
+          user: 'APPLICATION BOT',
+          text : name +' Joined'
+      })
+      this.setState({users, messages})
+  }
+
+  userLeft = (data) =>{
+      var {users, messages} = this.state
+      var {name} = data
+      var index = users.indexOf(name)
+      users.splice(index, 1)
+      messages.push({
+          user: 'APPLICATION BOT',
+          text : name +' Left'
+      })
+      this.setState(
+        {users, messages})
+  }
   render(){
     return(
         <Router>
           <div>
             <Route exact={true} path="/" component={Login} />
-            <MessageFrom />
-            <Message />
-            <MessageLIst />
+            <Route path="/chatRoom/" component={ChatRoom} />
           </div>
         </Router>
         )
@@ -37,5 +62,5 @@ class App extends Component {
 export default App
 
 
-// <Route path="/chatRoom/" component={ChatRoom} />
+
   

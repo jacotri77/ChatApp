@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import './index.css'
-
-import { addMessage } from './api/messaging'
+import '../index.css'
+import { addMessage } from '../api/messaging'
 import {connect} from 'react-redux'
 
 class ChatRoom extends Component{
@@ -35,7 +34,7 @@ constructor(props) {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange} name="message" placeholder="Send a message..." value={this.state.message} />
+          <input onChange={this.handleChange} name="message" placeholder="Send a message..." value={this.state.message} autoComplete="off" />
           <button type="submit">Send</button>
         </form>
         <div id="messages">
