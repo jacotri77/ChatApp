@@ -33,7 +33,7 @@ render(){
         <div className='users'>
               <h3> Please Provide Your Username </h3>
                   <form onSubmit={this.handleSubmit}>
-                     <input onChange={this.handleChange} name="user" type="text" value={this.state.user} placeholder="Username bitch!" autoComplete="off" />
+                     <input onChange={this.handleChange} name="user" type="text" value={this.state.user} placeholder="Username" autoComplete="off" />
                      <button type="submit">Login</button>
                     </form>
            </div>
