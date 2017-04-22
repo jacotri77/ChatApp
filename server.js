@@ -19,14 +19,14 @@ app.get("/", function(req, res){
 //     })
 // })
 
-const users = []
+const user = []
 const messages = []
 
 io.on('connection', function(socket){
     console.log("a user connected")
 
     socket.on('addUser', function(user){
-        users.push({
+        user.push({
             username: user,
             id: socket.client.conn.id
         })
@@ -37,8 +37,6 @@ io.on('connection', function(socket){
 
     socket.on('addMessage', function(message){
         userId = socket.client.conn.id
-    
-       
 
         var date = new Date()
         var hour = date.getHours()
@@ -81,7 +79,7 @@ io.on('connection', function(socket){
 // io.on('connection', function(socket){
 //     socket.on('send-nickName', function(nickName){
 //         socket.on('init', this.initialize)
-//         socket.on('send:message', this.messageRecieve)
+//         socket.on('send:message', this.messageReceive)
 //         socket.on('user:join', this.userJoined)
 //         socket.on('user:left', this.userLeft)
 //         console.log(users)
