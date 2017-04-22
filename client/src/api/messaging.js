@@ -7,11 +7,11 @@ export function addMessage(message) {
     socket.emit('addMessage', message)
 }
 
-socket.on('newMessage', function(message, timeStamp){
+socket.on('newMessage', function(message){
     store.dispatch({
         type: 'ADD_MESSAGE',
         message,
-        timeStamp
+       
        
     })
 })

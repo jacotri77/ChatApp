@@ -36,8 +36,9 @@ io.on('connection', function(socket){
     })
 
     socket.on('addMessage', function(message){
-        userId = socket.client.conn.id,
-        timeStamp =''
+        userId = socket.client.conn.id
+    
+       
 
         var date = new Date()
         var hour = date.getHours()
@@ -69,10 +70,10 @@ io.on('connection', function(socket){
 
         var timeStamp = hour + ':' + min + ':' + sec + ' ' + suffix
 
-        console.log(timeStamp)
+        console.log(message)
 
         io.emit('newMessage', message)
-        io.emit('newTime', timeStamp)
+       
         console.log(message)
     })
 })
