@@ -27,6 +27,14 @@ io.on('connection', function(socket){
     })
 })
 
+io.on('connection', function(socket){
+    socket.on('send-nickName', function(nickName){
+        socket.nickName = nickName
+        users.push(socket.nickName)
+        socket.emit('send-nickName', nickName)
+        console.log(users)
+    })
+})
 server.listen(3001, function(){
     console.log('listening on port 3001')
 })

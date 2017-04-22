@@ -27,6 +27,10 @@ constructor(props) {
     })
   }
 
+  setUsername = (e) => {
+    
+  }
+
   render() {
     return (
       <div>
