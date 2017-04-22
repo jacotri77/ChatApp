@@ -7,8 +7,8 @@ class ChatRoom extends Component{
     
 constructor(props) {
     super(props)
-    this.state = {
-      message: ''
+      this.state = {
+        message: ''
     }
   }
 
@@ -21,13 +21,10 @@ constructor(props) {
   handleSubmit = (e) => {
     e.preventDefault()
     addMessage(this.state.message)
-    this.setState({
-      message:''
+      this.setState({
+        message:''
+        
     })
-  }
-
-  setUsername = (e) => {
-    
   }
 
   render() {
