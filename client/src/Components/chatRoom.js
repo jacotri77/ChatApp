@@ -12,6 +12,11 @@ constructor(props) {
     }
   }
 
+  brokeBack = (e) => {
+    e.preventDefault()
+      this.props.history.goBack()
+  }
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
@@ -29,7 +34,8 @@ constructor(props) {
 
   render() {
     return (
-      <div>
+      <div className="users">
+      <button onClick={this.brokeBack}>Login Page</button>
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.handleChange} name="message" placeholder="Send a message..." value={this.state.message} autoComplete="off" />
           <button type="submit">Send</button>

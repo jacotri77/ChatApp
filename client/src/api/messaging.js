@@ -10,9 +10,8 @@ export function addMessage(message) {
 socket.on('newMessage', function(message){
     store.dispatch({
         type: 'ADD_MESSAGE',
-        message,
-       
-       
+        message
+
     })
 })
 

@@ -19,7 +19,7 @@ class App extends Component {
       this.setState({users, user: name})
   }
 
-  messageRecieve = (message) => {
+  messageReceive = (message) => {
       var {messages} = this.state
       messages.push(message)
       this.setState({messages})
@@ -53,7 +53,7 @@ class App extends Component {
         <Router>
           <div>
             <Route exact={true} path="/" component={Login} />
-            <Route path="/chatRoom/" component={ChatRoom} />
+            <Route path="/chatroom/" component={ChatRoom} />
           </div>
         </Router>
         )
