@@ -24,26 +24,22 @@ app.get("/", function(req, res){
 
 io.on('connection', function(socket){
     console.log("a user connected")
+//     socket.on('addUser', function(user){
+//         user.push({
+//             username: user,
+//             id: socket.client.conn.id
 
-    socket.on('addUser', function(user){
-        user.push({
-            username: user,
-            id: socket.client.conn.id
+//         })
 
-        })
-
-        console.log(user)
-        io.emit('newUser', user)
+//         console.log(user)
+//         io.emit('newUser', user)
    
- })
+//  })
 
     socket.on('addMessage', function(message){
-        userId: socket.client.conn.id
+        // userId: socket.client.conn.id
         console.log(message)
-       
-
         io.emit('newMessage', message)
-        
         console.log(message)
      })
 })
