@@ -5,8 +5,8 @@ import {connect} from 'react-redux'
 
 class ChatRoom extends Component{
     
-constructor(props) {
-    super(props)
+constructor() {
+    super()
       this.state = {
         message: ''
     }

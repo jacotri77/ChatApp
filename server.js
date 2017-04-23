@@ -29,21 +29,23 @@ io.on('connection', function(socket){
         user.push({
             username: user,
             id: socket.client.conn.id
+
         })
 
         console.log(user)
         io.emit('newUser', user)
-    })
+   
+ })
 
     socket.on('addMessage', function(message){
-        userId = socket.client.conn.id
-
-        })
-    
-        io.emit('newMessage', message)
-       
+        userId: socket.client.conn.id
         console.log(message)
-    
+       
+
+        io.emit('newMessage', message)
+        
+        console.log(message)
+     })
 })
 
 server.listen(3001, function(){
