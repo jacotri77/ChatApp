@@ -5,8 +5,8 @@ import {connect} from 'react-redux'
 
 class ChatRoom extends Component{
     
-constructor() {
-    super()
+constructor(props) {
+    super(props)
       this.state = {
         message: ''
     }
@@ -23,15 +23,13 @@ constructor() {
     })
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-    addMessage(this.state.message)
-
+   handleSubmit = (e) => {
+     e.preventDefault()
+     addMessage(this.state.message)
      console.log(this.state)
       this.setState({
-        message:''
-        
-    })
+       message:''
+     })
   }
 
   render() {

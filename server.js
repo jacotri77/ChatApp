@@ -19,8 +19,8 @@ app.get("/", function(req, res){
 //     })
 // })
 
-const users = []
-const messages = []
+// const users = []
+// const messages = []
 
 io.on('connection', function(socket){
     console.log("a user connected")
