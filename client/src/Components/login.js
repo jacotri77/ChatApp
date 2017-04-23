@@ -25,7 +25,7 @@ class Login extends Component{
       user:''
     })
 
-    this.props.history.push('/chatroom/')
+    this.props.history.push('/chatRoom/')
   }
 
 render(){

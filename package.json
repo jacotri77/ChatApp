@@ -13,7 +13,8 @@
     "express": "^4.15.2",
     "nodemon": "^1.11.0",
     "react-router-dom": "next",
-    "socket.io": "^1.7.3"
+    "socket.io": "^1.7.3",
+    "socketio": "^1.0.0"
   },
   "boilerplate": {
     "name": "express-react-boilerplate",

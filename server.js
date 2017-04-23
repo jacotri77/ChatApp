@@ -36,39 +36,39 @@ io.on('connection', function(socket){
     })
 
     socket.on('addMessage', function(message){
-        userId = socket.client.conn.id
+        // userId = socket.client.conn.id
 
-        var date = new Date()
-        var hour = date.getHours()
-        var min = date.getMinutes()
-        var sec = date.getSeconds()
-        var suffix = 'am'
+        // var date = new Date()
+        // var hour = date.getHours()
+        // var min = date.getMinutes()
+        // var sec = date.getSeconds()
+        // var suffix = 'am'
 
-        if(min < 10){
-            min = '0' + min
-        }
+        // if(min < 10){
+        //     min = '0' + min
+        // }
 
-        if(hour < 10){
-            hour = '0' + hour
-        }
+        // if(hour < 10){
+        //     hour = '0' + hour
+        // }
 
-        if(sec < 10){
-            sec = '0' + sec
-        }
+        // if(sec < 10){
+        //     sec = '0' + sec
+        // }
 
-        if(hour >= 12){
-           suffix = 'pm'
-        } else if(hour < 12 || hour === 24){
-           suffix = 'am'
-        }
+        // if(hour >= 12){
+        //    suffix = 'pm'
+        // } else if(hour < 12 || hour === 24){
+        //    suffix = 'am'
+        // }
 
-        if(hour > 12) {
-            hour = hour - 12
-        }
+        // if(hour > 12) {
+        //     hour = hour - 12
+        // }
 
-        var timeStamp = hour + ':' + min + ':' + sec + ' ' + suffix
+        // var timeStamp = hour + ':' + min + ':' + sec + ' ' + suffix
 
-        console.log(message)
+        // console.log(timeStamp)
 
         io.emit('newMessage', message)
        

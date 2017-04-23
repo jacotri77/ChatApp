@@ -515,7 +515,7 @@ expand-range@^1.8.1:
   dependencies:
     fill-range "^2.1.0"
 
-express:
+express, express@^4.13.3:
   version "4.15.2"
   resolved "https://registry.yarnpkg.com/express/-/express-4.15.2.tgz#af107fc148504457f2dca9a6f2571d7129b97b35"
   dependencies:
@@ -1203,7 +1203,7 @@ node-pre-gyp@^0.6.29:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
-nodemon:
+nodemon@^1.11.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-1.11.0.tgz#226c562bd2a7b13d3d7518b49ad4828a3623d06c"
   dependencies:
@@ -1645,7 +1645,7 @@ sntp@1.x.x:
   dependencies:
     hoek "2.x.x"
 
-socket.io:
+socket.io, socket.io@^1.3.7:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/socket.io/-/socket.io-1.7.3.tgz#b8af9caba00949e568e369f1327ea9be9ea2461b"
   dependencies:
@@ -1688,6 +1688,13 @@ socket.io-parser@2.3.1:
     debug "2.2.0"
     isarray "0.0.1"
     json3 "3.3.2"
+
+socketio@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/socketio/-/socketio-1.0.0.tgz#68ea1598fd240561601712e57499767ed8eba8ca"
+  dependencies:
+    express "^4.13.3"
+    socket.io "^1.3.7"
 
 spawn-command@^0.0.2-1:
   version "0.0.2"
