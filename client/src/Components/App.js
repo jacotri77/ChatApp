@@ -7,10 +7,9 @@ import ChatRoom from './chatRoom'
 class App extends Component {
   constructor(props){
     super()
-    this.state = {
-      users: [], 
-      messages:[], 
-    
+      this.state = {
+          users: [], 
+          messages:[], 
     }
   }
 

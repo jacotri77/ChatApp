@@ -4,12 +4,11 @@ import { addMessage } from '../api/messaging'
 import {connect} from 'react-redux'
 
 class ChatRoom extends Component{
-    
-constructor(props) {
-    super(props)
-      this.state = {
-        message: '',
-        user: ''
+  constructor(props) {
+      super()
+        this.state = {
+          message: '',
+          
     }
   }
 
@@ -29,7 +28,7 @@ constructor(props) {
      addMessage(this.state.message)
      console.log(this.state)
       this.setState({
-       message:''
+       message:'',
      })
   }
 

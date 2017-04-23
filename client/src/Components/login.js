@@ -6,8 +6,8 @@ import { addUser} from '../api/messaging'
 class Login extends Component{
     constructor(props){
         super(props)
-        this.state = {
-            user: ""
+            this.state = {
+                user: ""
     }
   }
   handleChange = (e) => {
@@ -18,11 +18,10 @@ class Login extends Component{
 
   handleSubmit = (e) => {
     e.preventDefault()
-    addUser(this.state.user)
-
-    console.log(this.state)
-    this.setState({
-      user:''
+     addUser(this.state.user)
+        console.log(this.state)
+        this.setState({
+          user:''
     })
 
     this.props.history.push('/chatroom/')
