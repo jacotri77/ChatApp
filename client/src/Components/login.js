@@ -43,7 +43,7 @@ render(){
 }
 const mapStateToProps = function(appState) {
   return {
-    user: appState.user
+    users: appState.users
   }
 }
 

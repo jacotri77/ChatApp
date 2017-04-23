@@ -26,6 +26,8 @@ constructor(props) {
   handleSubmit = (e) => {
     e.preventDefault()
     addMessage(this.state.message)
+
+     console.log(this.state)
       this.setState({
         message:''
         

@@ -7,7 +7,7 @@ html {
 }
  @import url('https://fonts.googleapis.com/css?family=Roboto');
 *{
-  color:rgb(169,169,169);
+  color:black;
   font-family: 'Roboto', sans-serif;
 }
 html, body{

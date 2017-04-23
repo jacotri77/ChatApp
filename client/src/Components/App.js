@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       users: [], 
       messages:[], 
-      text: ''
+    
     }
   }
 
