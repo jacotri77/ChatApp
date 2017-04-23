@@ -57,7 +57,7 @@ class App extends Component {
         <Router>
           <div>
             <Route exact={true} path="/" component={Login} />
-            <Route path="/chatRoom/" component={ChatRoom} />
+            <Route path="/chatroom/" component={ChatRoom} />
           </div>
         </Router>
         )
