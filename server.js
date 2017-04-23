@@ -19,7 +19,7 @@ app.get("/", function(req, res){
 //     })
 // })
 
-const user = []
+const users = []
 const messages = []
 
 io.on('connection', function(socket){
