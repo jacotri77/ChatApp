@@ -6,12 +6,15 @@ const moment = require('moment')
 
 class ChatRoom extends Component{
   constructor(props) {
-      super()
+      super(props)
+
         this.state = {
-          message: '',
-         
-          
+          message: [],
+          users: this.props.users,
+          moment: ''
+
     }
+
   }
 
   brokeBack = (e) => {
@@ -27,14 +30,16 @@ class ChatRoom extends Component{
 
    handleSubmit = (e) => {
      e.preventDefault()
-      moment().toString("MMMM DD YYYY, hh mm ss a")
         addMessage(this.state.message)
           console.log(this.state)
               this.setState({
                 message:'',
-                 
+                users:'',
+                moment: this.props.moment
+
      })
-  
+   
+    console.log ('from chat room',moment,this.state.message)
   }
 
   render() {
@@ -48,7 +53,7 @@ class ChatRoom extends Component{
         <div id="messages">
           <ul>
             {this.props.messages.map((message, i)=>(
-              <li key={'message' + i}>{message }</li>
+              <li key={'message' + i}>{message}</li>
             ))}
           </ul>
         </div>

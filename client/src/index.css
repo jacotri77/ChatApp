@@ -47,7 +47,9 @@ html, body{
   background-color:#605F5E;
 
 }
-
+.chats li{
+  list-style: none;
+}
 .chats input, .chats button{
   background-color:#605F5E;
   font-size: 24px;
@@ -55,4 +57,5 @@ html, body{
   border-radius: 5px;
   margin: 20px;
   border:1px solid #247BA0;
+
 }

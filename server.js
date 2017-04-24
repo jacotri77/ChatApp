@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const server = require('http').createServer(app)
 const io = require('socket.io')(server)
+const moment = require('moment')
 
 
 app.use(bodyParser.json() );       // to support JSON-encoded bodies
@@ -22,15 +23,13 @@ app.get("/", function(req, res){
 
 const users = []
 const messages = []
-// moment().format("MMMM DD YYYY, hh mm ss a")
-//             console.log(moment)
 
 
 io.on('connection', function(socket){
     console.log("a user connected")
 
     socket.on('addUser', function(user){
-        user.push({
+        users.push({
             username: user,
             id: socket.client.conn.id
 
@@ -41,9 +40,9 @@ io.on('connection', function(socket){
             
  })
     
-
     socket.on('addMessage', function(message){
-        userId = socket.client.conn.id
+        userId = socket.client.conn.id 
+        moment().toString("MMMM DD YYYY, hh mm ss a")
             io.emit('newMessage', message)
                  console.log(message)
        
