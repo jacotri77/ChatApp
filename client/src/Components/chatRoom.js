@@ -6,15 +6,11 @@ const moment = require('moment')
 
 class ChatRoom extends Component{
   constructor(props) {
-      super(props)
+    super(props)
 
-        this.state = {
-          message: [],
-          users: this.props.users,
-          moment: ''
-
+    this.state = {
+      message: ''
     }
-
   }
 
   brokeBack = (e) => {
@@ -22,24 +18,27 @@ class ChatRoom extends Component{
       this.props.history.goBack()
   }
 
+  // componentWillReceiveProps() {
+  //   if (!this.props.username) {
+  //     this.props.history.push('/')
+  //   }
+  // }
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     })
   }
 
-   handleSubmit = (e) => {
-     e.preventDefault()
-        addMessage(this.state.message)
-          console.log(this.state)
-              this.setState({
-                message:'',
-                users:'',
-                moment: this.props.moment
-
-     })
-   
-    console.log ('from chat room',moment,this.state.message)
+  handleSubmit = (e) => {
+    e.preventDefault()
+    addMessage({
+      message: this.state.message,
+      username: this.props.username
+    })
+    this.setState({
+      message:'',
+    })
   }
 
   render() {
@@ -53,7 +52,7 @@ class ChatRoom extends Component{
         <div id="messages">
           <ul>
             {this.props.messages.map((message, i)=>(
-              <li key={'message' + i}>{message}</li>
+              <li key={'message' + i}>{message.username + ' ' + message.message + ' ' + message.timestamp}</li>
             ))}
           </ul>
         </div>
@@ -64,6 +63,7 @@ class ChatRoom extends Component{
 
 const mapStateToProps = function(appState) {
   return {
+    username: appState.username,
     messages: appState.messages
   }
 }

@@ -3,25 +3,28 @@ import store from '../store'
 const socket = io.connect('http://10.68.0.60:3001')
 
 
-export function addUser(user) {
-    socket.emit('addUser', user)
+export function addUser(username) {
+    socket.emit('addUser', username)
 }
 
-    socket.on('newUser', function(user){
+    socket.on('newUser', function(username){
         store.dispatch({
             type: 'ADD_USER',
-            user
+            username
     })
 })
 
-export function addMessage(message) {
-    socket.emit('addMessage', message)
+export function addMessage(message, username) {
+    socket.emit('addMessage', {
+        message: message.message,
+        username: message.username
+    })
 }
 
     socket.on('newMessage', function(message){
         store.dispatch({
             type: 'ADD_MESSAGE',
-                message
+            message
     })
 })
 

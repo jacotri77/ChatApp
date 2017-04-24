@@ -5,7 +5,6 @@ const server = require('http').createServer(app)
 const io = require('socket.io')(server)
 const moment = require('moment')
 
-
 app.use(bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
@@ -28,24 +27,15 @@ const messages = []
 io.on('connection', function(socket){
     console.log("a user connected")
 
-    socket.on('addUser', function(user){
-        users.push({
-            username: user,
-            id: socket.client.conn.id
-
-        })
-
-        console.log(user)
-        io.emit('newUser', user)
+    socket.on('addUser', function(username){
+        io.emit('newUser', username)
             
- })
+     })
     
     socket.on('addMessage', function(message){
-        userId = socket.client.conn.id 
-        moment().toString("MMMM DD YYYY, hh mm ss a")
-            io.emit('newMessage', message)
-                 console.log(message)
-       
+        var timestamp = moment().toString("MMMM DD YYYY, hh mm ss a")
+        message.timestamp = timestamp
+        io.emit('newMessage', message)
      })
         
 })
