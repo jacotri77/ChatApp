@@ -40,3 +40,19 @@ html, body{
   width:300px;
   padding-left: 25px;
 }
+.chats{
+  height:2000px;
+  width:100%;
+  margin: auto;
+  background-color:#605F5E;
+
+}
+
+.chats input, .chats button{
+  background-color:#605F5E;
+  font-size: 24px;
+  height: 60px;
+  border-radius: 5px;
+  margin: 20px;
+  border:1px solid #247BA0;
+}

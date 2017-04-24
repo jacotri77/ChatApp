@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import '../index.css'
 import { addMessage } from '../api/messaging'
 import {connect} from 'react-redux'
+const moment = require('moment')
 
 class ChatRoom extends Component{
   constructor(props) {
       super()
         this.state = {
           message: '',
+         
           
     }
   }
@@ -25,16 +27,19 @@ class ChatRoom extends Component{
 
    handleSubmit = (e) => {
      e.preventDefault()
-     addMessage(this.state.message)
-     console.log(this.state)
-      this.setState({
-       message:'',
+      moment().toString("MMMM DD YYYY, hh mm ss a")
+        addMessage(this.state.message)
+          console.log(this.state)
+              this.setState({
+                message:'',
+                 
      })
+  
   }
 
   render() {
     return (
-      <div className="users">
+      <div className="chats">
       <button onClick={this.brokeBack}>Login Page</button>
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.handleChange} name="message" placeholder="Send a message..." value={this.state.message} autoComplete="off" />
@@ -43,7 +48,7 @@ class ChatRoom extends Component{
         <div id="messages">
           <ul>
             {this.props.messages.map((message, i)=>(
-              <li key={'message' + i}>{message}</li>
+              <li key={'message' + i}>{message }</li>
             ))}
           </ul>
         </div>
