@@ -12,6 +12,7 @@ html {
 }
 html, body{
   margin:0px;
+  padding:0px;
 }
 .users{
   height:2000px;
@@ -41,13 +42,16 @@ html, body{
   padding-left: 25px;
 }
 .chats{
+  display: inline-block;
+  float: right;
+  clear: right;
   height:2000px;
-  width:100%;
+  width:80%;
   margin: auto;
   background-color:#605F5E;
 
 }
-.chats li{
+li{
   list-style: none;
 }
 .chats input, .chats button{
@@ -58,4 +62,23 @@ html, body{
   margin: 20px;
   border:1px solid #247BA0;
 
+}
+
+#channels{
+  display: inline-block;
+  float: left;
+  width:17%;
+  height:2000px;
+  background-color: blue;
+  margin:0px;
+}
+
+#channels li{
+  padding:20px;
+  text-align: center;
+  border-bottom: 2px solid black;
+}
+
+#channels ul{
+  padding: 0px;
 }

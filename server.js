@@ -39,10 +39,12 @@ io.on('connection', function(socket){
      })
     
     socket.on('addMessage', function(message){
-        userId = socket.client.conn.id
+        var userId = socket.client.conn.id
         var timestamp = moment().format('LTS')
         message.timestamp = timestamp
+        message.userId = userId
         io.emit('newMessage', message)
+         
      })
         
 })

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import '../index.css'
 import { addMessage } from '../api/messaging'
+import LeftNav from './leftnav'
 import {connect} from 'react-redux'
 
 class ChatRoom extends Component{
@@ -32,16 +33,20 @@ class ChatRoom extends Component{
     e.preventDefault()
     addMessage({
       message: this.state.message,
-      username: this.props.username
+      username: this.props.username,
+      userId: this.props.userId
     })
-    this.setState({
-      message:'',
-    })
-  }
+      this.setState({
+        message:'',
+      })
+   }
 
   render() {
     return (
+      <div>
+      <LeftNav />
       <div className="chats">
+      
       <button onClick={this.brokeBack}>Login Page</button>
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.handleChange} name="message" placeholder="Send a message..." value={this.state.message} autoComplete="off" />
@@ -55,6 +60,7 @@ class ChatRoom extends Component{
           </ul>
         </div>
       </div>
+      </div>
     )
   }
 }
@@ -62,7 +68,8 @@ class ChatRoom extends Component{
 const mapStateToProps = function(appState) {
   return {
     username: appState.username,
-    messages: appState.messages
+    messages: appState.messages,
+    userId: appState.userId
   }
 }
 
