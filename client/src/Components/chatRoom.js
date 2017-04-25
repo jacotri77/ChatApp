@@ -2,12 +2,10 @@ import React, { Component } from 'react'
 import '../index.css'
 import { addMessage } from '../api/messaging'
 import {connect} from 'react-redux'
-const moment = require('moment')
 
 class ChatRoom extends Component{
   constructor(props) {
     super(props)
-
     this.state = {
       message: ''
     }
@@ -18,7 +16,7 @@ class ChatRoom extends Component{
       this.props.history.goBack()
   }
 
-  // componentWillReceiveProps() {
+  // componentWillReceiveProps(e) {
   //   if (!this.props.username) {
   //     this.props.history.push('/')
   //   }

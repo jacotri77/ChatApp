@@ -28,12 +28,19 @@ io.on('connection', function(socket){
     console.log("a user connected")
 
     socket.on('addUser', function(username){
+          users.push({
+            username: username,
+            id: socket.client.conn.id,
+            
+        })
+        console.log(users)
         io.emit('newUser', username)
             
      })
     
     socket.on('addMessage', function(message){
-        var timestamp = moment().toString("MMMM DD YYYY, hh mm ss a")
+        userId = socket.client.conn.id
+        var timestamp = moment().format('LTS')
         message.timestamp = timestamp
         io.emit('newMessage', message)
      })

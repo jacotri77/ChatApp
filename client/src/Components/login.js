@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import '../index.css'
-
 import { addUser} from '../api/messaging'
 
 class Login extends Component{
     constructor(props){
         super(props)
-            this.state = {
-                user: ''
+        this.state = {
+        username: ''
     }
   }
   handleChange = (e) => {
@@ -20,7 +19,7 @@ class Login extends Component{
     e.preventDefault()
      addUser(this.state.user)
         this.setState({
-          user:''
+          username:''
         })
 
     this.props.history.push('/chatroom/')
@@ -31,8 +30,8 @@ render(){
         <div className="users">
             <h1> Please Provide Your Username </h1>
             <form onSubmit={this.handleSubmit}>
-                <input onChange={this.handleChange} name="user" type="text" value={this.state.user} placeholder="Username" autoComplete="off" maxLength='14' /><br />
-                <button type="submit">Login</button>
+              <input onChange={this.handleChange} name="user" type="text" value={this.state.user} placeholder="Username" autoComplete="off" maxLength='14' /><br />
+              <button type="submit">Login</button>
             </form>
         </div>
      
