@@ -3,11 +3,12 @@ import '../index.css'
 import { addMessage } from '../api/messaging'
 import LeftNav from './leftnav'
 import {connect} from 'react-redux'
+const moment = require('moment')
 
 class ChatRoom extends Component{
-  constructor(props) {
-    super(props)
-    this.state = {
+  constructor(){
+    super()
+    this.state ={
       message: ''
     }
   }
@@ -17,60 +18,71 @@ class ChatRoom extends Component{
       this.props.history.goBack()
   }
 
-  // componentWillReceiveProps(e) {
-  //   if (!this.props.username) {
-  //     this.props.history.push('/')
-  //   }
-  // }
+  componentWillMount() {
+    if (!this.props.username) {
+      this.props.history.push('/')
+    }
+}
 
-  handleChange = (e) => {
+  handleChange = (e) =>{
     this.setState({
-      [e.target.name]: e.target.value
+    [e.target.name] : e.target.value
+
+    })
+
+  }
+
+  handleSubmit = (e) =>{
+    e.preventDefault()
+    addMessage ({
+      message: this.state.message,
+      username: this.props.username,
+      timestamp: moment().format('LTS')
+
+    })
+    this.setState({
+      message: ''
     })
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-    addMessage({
-      message: this.state.message,
-      username: this.props.username,
-      userId: this.props.userId
-    })
-      this.setState({
-        message:'',
-      })
-   }
+  componentWillUpdate() {
+        var node = this.refs.messages
+        this.shouldScrollBottom = node.scrollTop + node.offsetHeight === node.scrollHeight
+    }
 
-  render() {
+    componentDidUpdate() {
+        if (this.shouldScrollBottom) {
+            var node = this.refs.messages
+            node.scrollTop = node.scrollHeight
+        }
+    }
+
+  render(){
     return (
-      <div>
-      <LeftNav />
-      <div className="chats">
-      
-      <button onClick={this.brokeBack}>Login Page</button>
-        <form onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange} name="message" placeholder="Send a message..." value={this.state.message} autoComplete="off" />
-          <button type="submit">Send</button>
-        </form>
-        <div id="messages">
-          <ul>
-            {this.props.messages.map((message, i)=>(
-              <li key={'message' + i}>{message.username + ' ' + message.message + ' ' + message.timestamp}</li>
+      <div className='room'>
+        <LeftNav />
+        <div className="messagesContainer" ref="messages">
+          <ul className="message">
+          {this.props.messages.map((message, i)=>(
+              <li key={'message' + i}>{message.username + ' ' + message.message + ' ' +message.timestamp}</li>
             ))}
           </ul>
         </div>
+        <div className="formContainer">
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" onChange={this.handleChange} name="message" placeholder="Message in the room" value={this.state.message} />
+          </form>
+        </div>
       </div>
-      </div>
+
     )
   }
-}
 
-const mapStateToProps = function(appState) {
+}
+const mapStateToProps= function(appState) {
   return {
-    username: appState.username,
     messages: appState.messages,
-    userId: appState.userId
-  }
+    username: appState.username
+  } 
 }
-
 export default connect(mapStateToProps)(ChatRoom)

@@ -3,9 +3,9 @@ const bodyParser = require('body-parser')
 const app = express()
 const server = require('http').createServer(app)
 const io = require('socket.io')(server)
-const moment = require('moment')
 
-app.use(bodyParser.json() );       // to support JSON-encoded bodies
+
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
@@ -19,36 +19,29 @@ app.get("/", function(req, res){
 //         "foo":"bar"
 //     })
 // })
-
-const users = []
 const messages = []
-
+const users = []
 
 io.on('connection', function(socket){
-    console.log("a user connected")
+  console.log("a user connected")
+    socket.on('newMessage', function(message){
+      console.log(message)
+      io.emit('newMessage', message)
+      
+      
+      }) 
 
-    socket.on('addUser', function(username){
-          users.push({
-            username: username,
-            id: socket.client.conn.id,
-            
-        })
-        console.log(users)
-        io.emit('newUser', username)
-            
-     })
-    
-    socket.on('addMessage', function(message){
-        var userId = socket.client.conn.id
-        var timestamp = moment().format('LTS')
-        message.timestamp = timestamp
-        message.userId = userId
-        io.emit('newMessage', message)
-         
-     })
-        
-})
+  })
+
 server.listen(3001, function(){
     console.log('listening on port 3001')
 })
+    
 
+    // socket.on('disconnect', function(socket){
+    //   console.log('a user disconnected')
+    //   const index = users.indexOf(socket)
+    //   users.splice(index,i)
+      
+    // })
+    //     

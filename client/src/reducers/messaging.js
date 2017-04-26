@@ -1,7 +1,7 @@
 const initialState = {
     messages: [],
     username: '',
-    userId: ''
+   
 }
 
 export default function messageReducer(state=initialState, action) {
