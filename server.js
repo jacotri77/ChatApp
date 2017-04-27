@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const server = require('http').createServer(app)
 const io = require('socket.io')(server)
+const Sequelize = require('sequelize')
 
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
@@ -27,8 +28,15 @@ io.on('connection', function(socket){
     socket.on('newMessage', function(message){
       console.log(message)
       io.emit('newMessage', message)
+          }) 
+
+
       
-      
+     socket.on('disconnect', function(socket){
+      console.log('a user disconnected')
+      const index = users.indexOf(socket)
+      users.splice(index,i)
+      io.emit('disconnect', message)
       }) 
 
   })

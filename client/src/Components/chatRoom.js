@@ -3,6 +3,7 @@ import '../index.css'
 import { addMessage } from '../api/messaging'
 import LeftNav from './leftnav'
 import {connect} from 'react-redux'
+import Avatar from 'material-ui/Avatar'
 const moment = require('moment')
 
 class ChatRoom extends Component{
@@ -59,20 +60,29 @@ class ChatRoom extends Component{
 
   render(){
     return (
-      <div className='room'>
-        <LeftNav />
-        <div className="messagesContainer" ref="messages">
+      <div>
+      <LeftNav />
+      <div className='roomContainer'>
+        <ul className='userList'>
+          {this.props.messages.map((message, i)=>{
+            return(
+          
+            <li id="activeUser" key={'message' + i}>{message.username}</li>
+            )})}
+          </ul>
+        <div className="notesContainer" ref="messages">
           <ul className="message">
           {this.props.messages.map((message, i)=>(
-              <li key={'message' + i}>{message.username + ' ' + message.message + ' ' +message.timestamp}</li>
+              <li key={'message' + i} id="messageLi"> <Avatar size={40}>{message.username.toUpperCase()}</Avatar>{'  ' + message.message + '   ' +message.timestamp}</li>
             ))}
           </ul>
         </div>
-        <div className="formContainer">
+        <div className="formz">
           <form onSubmit={this.handleSubmit}>
-            <input type="text" onChange={this.handleChange} name="message" placeholder="Message in the room" value={this.state.message} />
+            <input type="text" id="formInput" onChange={this.handleChange} name="message" placeholder="Message in the room" value={this.state.message} />
           </form>
         </div>
+      </div>
       </div>
 
     )
