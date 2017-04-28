@@ -3,10 +3,10 @@ const bodyParser = require('body-parser')
 const app = express()
 const server = require('http').createServer(app)
 const io = require('socket.io')(server)
-const Sequelize = require('sequelize')
 
 
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
+
+app.use(bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
@@ -23,6 +23,8 @@ app.get("/", function(req, res){
 const messages = []
 const users = []
 
+
+
 io.on('connection', function(socket){
   console.log("a user connected")
     socket.on('newMessage', function(message){
@@ -35,8 +37,8 @@ io.on('connection', function(socket){
      socket.on('disconnect', function(socket){
       console.log('a user disconnected')
       const index = users.indexOf(socket)
-      users.splice(index,i)
-      io.emit('disconnect', message)
+      users.splice(index, users)
+      io.emit('disconnect', users)
       }) 
 
   })
@@ -45,11 +47,3 @@ server.listen(3001, function(){
     console.log('listening on port 3001')
 })
     
-
-    // socket.on('disconnect', function(socket){
-    //   console.log('a user disconnected')
-    //   const index = users.indexOf(socket)
-    //   users.splice(index,i)
-      
-    // })
-    //     

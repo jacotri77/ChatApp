@@ -1,0 +1,49 @@
+.messages{
+position: relative;
+
+}
+
+.messagesContainer ul{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0px;
+  padding-left:0px;
+
+}
+.formContainer, .messageContainer{
+  display: flex;
+  height:100%;
+  width:80%;
+  margin: auto;
+  background-color:#605F5E;
+  position:absolute;
+
+}
+
+.message, .formContainer input{
+  display: flex;
+  height: 100px;
+  width: 80%;
+  margin:auto;
+  background-color: #247BA0;
+}
+.
+
+
+li, #messageli{
+  list-style: none;
+}
+.formContainer input, .formContainer button{
+  background-color:#605F5E;
+  font-size: 24px;
+  height: 60px;
+  border-radius: 5px;
+  margin: 20px;
+  border:1px solid #247BA0;
+
+}
+
+<Avatar color={blueGrey500}backgroundColor={indigo900}size={50}>{message.username.charAt(0).toUpperCase()} </Avatar>
+
+import Avatar from 'material-ui/Avatar'
+import {blueGrey500, blue900, indigo900} from 'material-ui/styles/colors'

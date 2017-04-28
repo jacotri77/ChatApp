@@ -8,7 +8,7 @@ class LeftNav extends Component {
 		return(
 			<div id="channels">
 				<ul>
-					<li><Link to="/brewHouse"/>Brew House</li>
+					<li><Link to={"/brewHouse"}/>Brew House</li>
 					<li><Link to="/coffeeHouse" />Coffee House</li>
 					<li><Link to="/allthingsmoto" />All Things Moto</li>
 				</ul>

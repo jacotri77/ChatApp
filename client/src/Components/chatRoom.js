@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import '../index.css'
 import { addMessage } from '../api/messaging'
-import LeftNav from './leftnav'
 import {connect} from 'react-redux'
-import Avatar from 'material-ui/Avatar'
+import DropDownMenu from 'material-ui/DropDownMenu'
+import MenuItem from 'material-ui/MenuItem'
+
+
 const moment = require('moment')
+
 
 class ChatRoom extends Component{
   constructor(){
@@ -58,32 +61,45 @@ class ChatRoom extends Component{
         }
     }
 
+  handleMenu = (event, index, value) => this.setState({value})
+
   render(){
     return (
       <div>
-      <LeftNav />
+        <div className="activeUsers">
+          <h3> Active Users</h3>
+              <DropDownMenu value={this.state.value} onChange={this.handleMenu} openImmediately={false}>
+                  <ul className='userList'>
+                    {this.props.messages.map((message, i)=>{
+                      return(
+                        <MenuItem value={1} primaryText={message.username} />
+                      )})}
+                  </ul>
+              </DropDownMenu>
+        </div>
+        <div id="chatRoomHeader">
+          <h3>Welcome {this.props.username} to Thunderdome!</h3>
+          <ul>
+            <li><i className="fa fa-cog fa-2x" aria-hidden="true"></i></li>
+            <li><i className="fa fa-user fa-2x" aria-hidden="true"></i></li>  
+          </ul>
+        </div>
       <div className='roomContainer'>
-        <ul className='userList'>
-          {this.props.messages.map((message, i)=>{
-            return(
-          
-            <li id="activeUser" key={'message' + i}>{message.username}</li>
-            )})}
-          </ul>
-        <div className="notesContainer" ref="messages">
-          <ul className="message">
-          {this.props.messages.map((message, i)=>(
-              <li key={'message' + i} id="messageLi"> <Avatar size={40}>{message.username.toUpperCase()}</Avatar>{'  ' + message.message + '   ' +message.timestamp}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="formz">
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" id="formInput" onChange={this.handleChange} name="message" placeholder="Message in the room" value={this.state.message} />
-          </form>
+          <div className="notesContainer" ref="messages">
+              <ul className="message">
+                {this.props.messages.map((message, i)=>(
+                  <li key={'message' + i} id="messageLi">{message.username + '  ' + message.message + '   ' +message.timestamp}</li>
+                  ))}
+              </ul>
+            </div>
+           <div className="formz">
+              <form onSubmit={this.handleSubmit}>
+                <input type="text" id="formInput" onChange={this.handleChange} name="message" placeholder="Send a message to the room" value={this.state.message} autoComplete="off"/>
+              </form>
+            </div>
         </div>
       </div>
-      </div>
+     
 
     )
   }
@@ -96,3 +112,11 @@ const mapStateToProps= function(appState) {
   } 
 }
 export default connect(mapStateToProps)(ChatRoom)
+
+
+// <ul className='userList'>
+      //     {this.props.messages.map((message, i)=>{
+      //       return(
+      //       <li id="activeUser" key={'message' + i}>{message.username}</li>
+      //       )})}
+      //     </ul>

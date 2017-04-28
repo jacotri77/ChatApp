@@ -28,7 +28,7 @@ class Login extends Component{
 render(){
     return(
         <div className="users">
-            <h1> Please Provide Your Username </h1>
+            <h1> Throw In A Nickname to Get to the Chatrooms</h1>
             <form onSubmit={this.handleSubmit}>
               <input onChange={this.handleChange} name="user" type="text" value={this.state.user} placeholder="Username" autoComplete="off" maxLength='14' /><br />
               <button type="submit">Login</button>
