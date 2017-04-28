@@ -8,13 +8,14 @@ import MenuItem from 'material-ui/MenuItem'
 
 
 const moment = require('moment')
-const usernameId = []
+
 const styles ={
   customWidth:{
     width:'85%',
 
   },
 }
+
 
 
 class ChatRoom extends Component{
@@ -24,6 +25,9 @@ class ChatRoom extends Component{
       message: ''
     }
   }
+
+
+
 
   componentWillMount() {
     if (!this.props.username) {
@@ -73,10 +77,8 @@ class ChatRoom extends Component{
           <h3> Active Users</h3>   
             <DropDownMenu value={this.state.value} onChange={this.handleMenu} openImmediately={false} style={styles.customWidth} underlineStyle={{borderColor:'#BBCDE5'}} listStyle={{backgroundColor:'#BBCDE5', color:'#222222'}}>
                   <ul className='userList'>
-                    {this.props.messages.map((message, i)=>{
-                      return(
-                        <MenuItem value={1} key={'message' + i} primaryText={message.username}   />
-                      )})}
+                        <MenuItem value={1} key={'message' + this.props.username} primaryText={this.props.username}   />
+                    
                   </ul>
               </DropDownMenu>     
         </div>
