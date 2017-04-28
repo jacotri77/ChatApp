@@ -34,12 +34,12 @@ io.on('connection', function(socket){
 
 
       
-     socket.on('disconnect', function(socket){
-      console.log('a user disconnected')
-      const index = users.indexOf(socket)
-      users.splice(index, users)
-      io.emit('disconnect', users)
-      }) 
+     // socket.on('disconnect', function(socket){
+     //  console.log('a user disconnected')
+     //  const index = users.indexOf(socket)
+     //  users.splice(index, users)
+     //  io.emit('disconnect', users)
+     //  }) 
 
   })
 

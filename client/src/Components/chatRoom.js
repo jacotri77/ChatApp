@@ -6,7 +6,14 @@ import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem'
 
 
+
 const moment = require('moment')
+const styles ={
+  customWidth:{
+    width:'85%',
+    underlineStyle: '2px solid #BBCDE5',
+  },
+}
 
 
 class ChatRoom extends Component{
@@ -15,11 +22,6 @@ class ChatRoom extends Component{
     this.state ={
       message: ''
     }
-  }
-
-  brokeBack = (e) => {
-    e.preventDefault()
-      this.props.history.goBack()
   }
 
   componentWillMount() {
@@ -61,21 +63,21 @@ class ChatRoom extends Component{
         }
     }
 
-  handleMenu = (event, index, value) => this.setState({value})
+    handleMenu = (event, index, value) => this.setState({value})
 
   render(){
     return (
       <div>
         <div className="activeUsers">
-          <h3> Active Users</h3>
-              <DropDownMenu value={this.state.value} onChange={this.handleMenu} openImmediately={false}>
+          <h3> Active Users</h3>   
+            <DropDownMenu value={this.state.value} onChange={this.handleMenu} openImmediately={false}>
                   <ul className='userList'>
                     {this.props.messages.map((message, i)=>{
                       return(
-                        <MenuItem value={1} primaryText={message.username} />
+                        <MenuItem value={1} style={styles.customWidth} primaryText={message.username} />
                       )})}
                   </ul>
-              </DropDownMenu>
+              </DropDownMenu>     
         </div>
         <div id="chatRoomHeader">
           <h3>Welcome {this.props.username} to Thunderdome!</h3>

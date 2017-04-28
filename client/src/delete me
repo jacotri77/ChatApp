@@ -47,3 +47,28 @@ li, #messageli{
 
 import Avatar from 'material-ui/Avatar'
 import {blueGrey500, blue900, indigo900} from 'material-ui/styles/colors'
+
+
+var nsp=io.of('/everything-moto')
+nsp.on('connection', function (socket){
+  console.log("a user connected to moto")
+})
+nsp.emit ('hi')
+
+export function motoMessage(message) {
+  var socket=io('/everything-moto')
+  socket.emit('newMotoMessage', message)
+}
+
+<DropDownMenu value={this.state.value} onChange={this.handleMenu} openImmediately={false} style={styles.customWidth}>
+
+
+<ul className='userList'>
+                    {this.props.messages.map((message, i)=>{
+                      
+                        <li key={'message' + i}>{message.username}</li>
+                     })}
+                  </ul>
+
+
+                  const usernameId = []
