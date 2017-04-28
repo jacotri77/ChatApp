@@ -8,10 +8,11 @@ import MenuItem from 'material-ui/MenuItem'
 
 
 const moment = require('moment')
+const usernameId = []
 const styles ={
   customWidth:{
     width:'85%',
-    underlineStyle: '2px solid #BBCDE5',
+
   },
 }
 
@@ -70,11 +71,11 @@ class ChatRoom extends Component{
       <div>
         <div className="activeUsers">
           <h3> Active Users</h3>   
-            <DropDownMenu value={this.state.value} onChange={this.handleMenu} openImmediately={false}>
+            <DropDownMenu value={this.state.value} onChange={this.handleMenu} openImmediately={false} style={styles.customWidth} underlineStyle={{borderColor:'#BBCDE5'}} listStyle={{backgroundColor:'#BBCDE5', color:'#222222'}}>
                   <ul className='userList'>
                     {this.props.messages.map((message, i)=>{
                       return(
-                        <MenuItem value={1} style={styles.customWidth} primaryText={message.username} />
+                        <MenuItem value={1} key={'message' + i} primaryText={message.username}   />
                       )})}
                   </ul>
               </DropDownMenu>     
@@ -82,8 +83,8 @@ class ChatRoom extends Component{
         <div id="chatRoomHeader">
           <h3>Welcome {this.props.username} to Thunderdome!</h3>
           <ul>
-            <li><i className="fa fa-cog fa-2x" aria-hidden="true"></i></li>
-            <li><i className="fa fa-user fa-2x" aria-hidden="true"></i></li>  
+            <li><a href='http://harleydavidson.com'><i className="fa fa-cog fa-2x" aria-hidden="true"></i></a></li>
+            <li><a href='http://people.com'><i className="fa fa-user fa-2x" aria-hidden="true"></i></a></li>  
           </ul>
         </div>
       <div className='roomContainer'>

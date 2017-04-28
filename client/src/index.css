@@ -118,8 +118,6 @@ html, body{
 }
 .notesContainer{
   overflow: auto;
-  top: 0px;
-  bottom: 100px;
   width: 100%;
 }
 
