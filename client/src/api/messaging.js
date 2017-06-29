@@ -1,7 +1,7 @@
 import io from 'socket.io-client'
 import store from '../store'
-const socket = io.connect('http://10.68.0.60:3001')
-// const socket = io.connect('http://localhost:3001')
+// const socket = io.connect('http://10.68.0.60:3001')
+const socket = io.connect('http://localhost:3001')
 // const socket = io.connect('http://192.168.1.114:3001')
 
 export function addUser(username){
@@ -21,4 +21,5 @@ socket.on('newMessage', function(message){
         message
     })
 })
+
 

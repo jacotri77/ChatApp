@@ -60,7 +60,7 @@ export function motoMessage(message) {
   socket.emit('newMotoMessage', message)
 }
 
-<DropDownMenu value={this.state.value} onChange={this.handleMenu} openImmediately={false} style={styles.customWidth}>
+<DropDownMenu value={this.state.value} onChange={this.handleMenu} openImmediately={false} >
 
 
 <ul className='userList'>
