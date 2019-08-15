@@ -8,6 +8,9 @@
     "start": "concurrently \"nodemon server\" \"cd client && npm start\"",
     "build": "react-scripts build"
   },
+   "devDependencies": {
+    "react-scripts": "0.9.5"
+  },
   "dependencies": {
     "body-parser": "^1.17.1",
     "concurrently": "^4.1.0",
