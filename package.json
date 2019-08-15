@@ -6,6 +6,7 @@
   "license": "ISC",
   "scripts": {
     "start": "concurrently \"nodemon server\" \"cd client && npm start\""
+    "build": "react-scripts build"
   },
   "dependencies": {
     "body-parser": "^1.17.1",
