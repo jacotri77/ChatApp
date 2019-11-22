@@ -17,7 +17,7 @@
     "express": "^4.15.2",
     "material-ui": "^0.20.2",
     "moment": "^2.18.1",
-    "nodemon": "^1.11.0",
+    "nodemon": "^2.0.1",
     "react-router-dom": "next",
     "react-tap-event-plugin": "^2.0.1",
     "sequelize": "^5.8.7",
