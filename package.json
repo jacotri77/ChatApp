@@ -9,7 +9,7 @@
     "build": "react-scripts build"
   },
    "devDependencies": {
-    "react-scripts": "0.9.5"
+    "react-scripts": "3.4.1"
   },
   "dependencies": {
     "body-parser": "^1.17.1",
