@@ -19,7 +19,7 @@
     "moment": "^2.18.1",
     "nodemon": "^1.11.0",
     "react-router-dom": "next",
-    "react-tap-event-plugin": "^2.0.1",
+    "react-tap-event-plugin": "^3.0.3",
     "sequelize": "^5.8.7",
     "sha1": "^1.1.1",
     "socket.io": "^2.2.0",
